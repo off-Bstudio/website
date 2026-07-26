@@ -103,15 +103,15 @@ nav.wrap{
   letter-spacing:0.05em;
   background:var(--bg-alt);
 }
-.lang-toggle button{
-  background:none; border:none; cursor:pointer;
+.lang-toggle a{
+  display:inline-block;
   color:var(--muted);
   padding:6px 14px;
   border-radius:999px;
   font-family:inherit; font-size:inherit; letter-spacing:inherit;
   transition:color .2s ease, background .2s ease;
 }
-.lang-toggle button.active{
+.lang-toggle a.active{
   background:var(--accent);
   color:#0B0D12;
   font-weight:600;
@@ -121,9 +121,14 @@ nav.wrap{
   display:none;
   width:26px; height:20px;
   flex-direction:column; justify-content:space-between;
-  background:none; border:none; cursor:pointer;
+  cursor:pointer;
 }
 .burger span{ display:block; height:2px; width:100%; background:var(--fg); }
+.nav-toggle-checkbox{
+  position:absolute;
+  opacity:0;
+  pointer-events:none;
+}
 
 /* ---------- Hero (home) ---------- */
 .hero{
@@ -261,11 +266,6 @@ nav.wrap{
   font-size:0.85rem;
 }
 
-.reveal{
-  opacity:0; transform:translateY(28px);
-  transition:opacity .7s ease, transform .7s ease;
-}
-.reveal.in{ opacity:1; transform:translateY(0); }
 
 /* ---------- Manifesto ---------- */
 .manifesto{ padding:140px 0; border-top:1px solid var(--line); }
@@ -454,7 +454,7 @@ footer{ border-top:1px solid var(--line); padding:60px 0 40px; }
     transform:translateY(-130%);
     transition:transform .3s ease;
   }
-  .nav-links.open{ transform:translateY(0); }
+  .nav-toggle-checkbox:checked ~ .nav-links{ transform:translateY(0); }
   .nav-links a{ padding:18px 32px; width:100%; border-bottom:1px solid var(--line); }
   .burger{ display:flex; }
   .games-grid{ grid-template-columns:1fr; }
